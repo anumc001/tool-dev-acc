@@ -1,0 +1,90 @@
+code to excel
+
+
+import requests
+from bs4 import BeautifulSoup
+from openpyxl import Workbook
+
+# Create a new workbook
+workbook = Workbook()
+
+# Select the active worksheet
+worksheet = workbook.active
+
+# Define the URL to scrape
+url = 'https://www.example.com'
+
+# Send a GET request to the URL
+response = requests.get(url)
+
+# Parse the HTML content of the page with BeautifulSoup
+soup = BeautifulSoup(response.content, 'html.parser')
+
+# Find the table you want to extract data from
+table = soup.find('table')
+
+# Find all rows in the table
+rows = table.find_all('tr')
+
+# Loop through each row and extract the data
+for row in rows:
+    # Find all columns in the row
+    cols = row.find_all('td')
+    # Create a new list to hold the values for this row
+    row_data = []
+    # Loop through each column and extract the value
+    for col in cols:
+        # Append the value to the row_data list
+        row_data.append(col.text.strip())
+    # Write the row_data list to the worksheet
+    worksheet.append(row_data)
+
+# Save the workbook to disk
+workbook.save('example.xlsx')
+
+
+
+
+code sql
+
+import requests
+from bs4 import BeautifulSoup
+import sqlite3
+
+# Define the URL to scrape
+url = 'https://www.example.com'
+
+# Send a GET request to the URL
+response = requests.get(url)
+
+# Parse the HTML content of the page with BeautifulSoup
+soup = BeautifulSoup(response.content, 'html.parser')
+
+# Find the table you want to extract data from
+table = soup.find('table')
+
+# Find all rows in the table
+rows = table.find_all('tr')
+
+# Connect to the SQLite database
+conn = sqlite3.connect('example.db')
+
+# Create a new table to store the data
+conn.execute('CREATE TABLE IF NOT EXISTS data (id INTEGER PRIMARY KEY AUTOINCREMENT, col1 TEXT, col2 TEXT)')
+
+# Loop through each row and extract the data
+for row in rows:
+    # Find all columns in the row
+    cols = row.find_all('td')
+    # Extract the values from the columns
+    col1 = cols[0].text.strip()
+    col2 = cols[1].text.strip()
+    # Insert the values into the database
+    conn.execute('INSERT INTO data (col1, col2) VALUES (?, ?)', (col1, col2))
+
+# Commit the changes to the database
+conn.commit()
+
+# Close the database connection
+conn.close()
+
