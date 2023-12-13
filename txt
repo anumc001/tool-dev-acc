@@ -1,0 +1,15 @@
+Explore Couchbase's key features, architecture, and enterprise benefits, including the latest innovations in Couchbase Capella Columnar & Capella IQ, with joint success stories such Carnival Cruise, PepsiCo, and Citibank.
+Agenda: 
+•	introduction to Couchbase for Enterprise Applications 
+•	Overview of Couchbase's key features.
+•	Benefits for enterprise environments.
+•	Couchbase Architecture Deep Dive
+•	Understanding the internal workings of Couchbase.
+•	Scalability and performance considerations.
+•	Join Customers 
+•	Carnival Cruise
+•	PepsiCo
+•	Citibank
+•	What’s new Couchbase Capella Columnar & Capella IQ. 
+•	Exploring Couchbase's advanced functionalities.
+•	Real-world scenarios and solutions.
